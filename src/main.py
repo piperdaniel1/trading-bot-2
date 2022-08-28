@@ -4,7 +4,7 @@ from datatypes.Indicator import Indicator
 
 def main():
     print(" === Trading Bot 2 === ")
-    ph = PriceHistory("MSFT", "1h", "30d")
+    ph = PriceHistory("SPXL", "1d", "1y")
     ema = Indicator("ema")
     save_simple_ind_plot(ph, [ema])
     
