@@ -27,7 +27,19 @@ def plot_basic_ph(ph: PriceHistory):
         else:
             plt.bar(x_ind, abs(bar["open"] - bar["close"]), bottom=bar["close"], align="center", color="blue", width=bar_width)
             plt.vlines(x_ind, bar["low"], bar["high"], linestyles="dotted", color="blue", linewidth=bar_width/3)
+    
 
+    for sup_point in ph.get_sup_points():
+        print(sup_point)
+        plt.plot([sup_point["start"], len(bar_list)], [sup_point["price"], sup_point["price"]], color="lightgreen")
+    
+    print()
+
+    for res_point in ph.get_res_points():
+        print(res_point)
+        plt.plot([res_point["start"], len(bar_list)], [res_point["price"], res_point["price"]], color="lightblue")
+
+# Used to save a plot of a PriceHistory with zero to many indicators alongside / overlayed
 def save_simple_ind_plot(ph: PriceHistory, indicators: List[Indicator] = [], file: str = None):
     plot_basic_ph(ph)
 
